@@ -1,0 +1,21 @@
+server:
+  addr: "127.0.0.1:13200"
+  name: "system-usergin-web
+zap:
+  debugFileName: "D:\\test\\go-frame/logs\\debug\\debug.log"
+  infoFileName: "D:\\test\\go-frame/logs\\info\\Info.log"
+  warnFileName: "D:\\test\\go-frame/logs\\error\\warn.log"
+  maxSize: 500
+  maxAge: 28
+  maxBackups: 3
+
+redis:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+
+
+grpc:
+  addr: "127.0.0.1:8881"
+  name: "LoginService"
