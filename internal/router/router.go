@@ -1,6 +1,9 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
 // Router 路由接口
 type Router interface {
@@ -24,6 +27,9 @@ func InitRouter(r *gin.Engine) {
 	// 传入Router接口的实现
 	//rg := New()
 	//rg.Route(&user.RouterUser{}, r)
+	r.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusNotFound, "The incorrect API route")
+	})
 	for _, ro := range routers {
 		ro.Route(r)
 	}

@@ -17,5 +17,5 @@ func init() {
 
 func (*RouterUser) Route(r *gin.Engine) {
 	handlerUser := New()
-	r.GET("/user/{id}", handlerUser.GetUser)
+	r.GET("/user", handlerUser.GetUser)
 }
