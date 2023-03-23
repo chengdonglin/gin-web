@@ -12,7 +12,7 @@ var AppConfig = InitConfig()
 type Config struct {
 	viper *viper.Viper
 	SC    *ServerConfig
-	GC    *GrpcConfig
+	Mysql *MysqlConfig
 }
 
 type ServerConfig struct {
@@ -20,9 +20,12 @@ type ServerConfig struct {
 	Addr string
 }
 
-type GrpcConfig struct {
-	Name string
-	Addr string
+type MysqlConfig struct {
+	Username string
+	Password string
+	Host     string
+	Port     int
+	DbName   string
 }
 
 func InitConfig() *Config {
@@ -41,7 +44,7 @@ func InitConfig() *Config {
 	}
 	conf.ReadServerConfig()
 	conf.InitZapLog()
-	conf.ReadGrpcConfig()
+	conf.ReadMysqlConfig()
 	return conf
 }
 
@@ -67,10 +70,13 @@ func (c *Config) InitZapLog() {
 	}
 }
 
-func (c *Config) ReadGrpcConfig() {
-	gc := &GrpcConfig{
-		Name: c.viper.GetString("grpc.name"),
-		Addr: c.viper.GetString("grpc.addr"),
+func (c *Config) ReadMysqlConfig() {
+	m := &MysqlConfig{
+		Username: c.viper.GetString("mysql.username"),
+		Password: c.viper.GetString("mysql.password"),
+		Host:     c.viper.GetString("mysql.host"),
+		Port:     c.viper.GetInt("mysql.port"),
+		DbName:   c.viper.GetString("mysql.dbname"),
 	}
-	c.GC = gc
+	c.Mysql = m
 }

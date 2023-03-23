@@ -1,6 +1,7 @@
 server:
   addr: "127.0.0.1:13200"
-  name: "system-usergin-web
+  name: "system-usergin-web"
+
 zap:
   debugFileName: "D:\\test\\go-frame/logs\\debug\\debug.log"
   infoFileName: "D:\\test\\go-frame/logs\\info\\Info.log"
@@ -15,7 +16,9 @@ redis:
   password: ""
   db: 0
 
-
-grpc:
-  addr: "127.0.0.1:8881"
-  name: "LoginService"
+mysql:
+  username: root
+  password: 123456
+  host: 127.0.0.1
+  port: 3306
+  dbname: blog

@@ -16,7 +16,6 @@ func init() {
 }
 
 func (*RouterUser) Route(r *gin.Engine) {
-	// 初始化grpc客户端连接
 	handlerUser := New()
 	r.GET("/user/{id}", handlerUser.GetUser)
 }
